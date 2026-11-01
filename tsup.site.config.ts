@@ -10,5 +10,7 @@ export default defineConfig({
   target: 'es2022',
   minify: true,
   clean: false,
+  // Inline `yaml` and everything else: the site has no node_modules.
+  noExternal: [/.*/],
   loader: { '.md': 'text' },
 });

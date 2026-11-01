@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <title>Mockup — crew doctor</title>
+    <link rel="icon" href="../favicon.svg" />
+    <link rel="stylesheet" href="../assets/site.css" />
+    <style>
+      body { background: radial-gradient(120% 80% at 50% 0%, #2a1d36 0%, #0b0c0e 60%); min-height: 100vh; display: grid; place-items: center; padding: 48px; }
+      .term { width: 1040px; font-size: 15px; }
+      .term-body { padding: 22px 28px 28px; }
+    </style>
+  </head>
+  <body>
+    <div class="term"><div class="term-bar"><i></i><i></i><i></i><span class="term-title">~/parcel — zsh</span></div><pre class="term-body" id="t"></pre></div>
+    <script type="module">
+      import { memoryRepo, planInit, runDoctor, withDefaults } from '../assets/crew.js';
+      import { dim, doctorOutput, prompt } from '../assets/term.js';
+      const config = withDefaults({ name: 'Parcel', roles: ['business', 'design', 'dev', 'qa'] });
+      const files = Object.fromEntries(planInit(config).map((f) => [f.path, f.content]));
+      const ok = runDoctor(memoryRepo(files));
+      const broken = { ...files };
+      delete broken['.claude/agents/qa.md'];
+      delete broken['docs/design/DESIGN_SPEC.md'];
+      broken['.claude/agents/dev.md'] = broken['.claude/agents/dev.md'].replace('tools: Read,', 'tools: Telepathy, Read,');
+      const bad = runDoctor(memoryRepo(broken));
+      document.getElementById('t').innerHTML = [
+        prompt('npx crew doctor'),
+        ...doctorOutput(bad, 'parcel').slice(1),
+        '',
+        dim('# restore the files, then'),
+        prompt('npx crew doctor'),
+        ...doctorOutput(ok, 'parcel').filter((l) => !l.includes('│')).slice(1),
+      ].join('\n');
+    </script>
+  </body>
+</html>

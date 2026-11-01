@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Live demo — crew</title>
+    <meta
+      name="description"
+      content="Run crew init, crew add and crew doctor in your browser. The same generator as the CLI, compiled for the web. Nothing leaves your machine."
+    />
+    <meta name="color-scheme" content="light dark" />
+    <meta property="og:title" content="crew live demo" />
+    <meta property="og:image" content="https://mauriciomsouza.github.io/crew/og.png" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link
+      rel="preload"
+      href="./assets/fonts/inter-latin-wght.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="./assets/site.css" />
+    <link rel="stylesheet" href="./assets/demo.css" />
+  </head>
+  <body>
+    <nav class="nav" aria-label="Main">
+      <div class="wrap">
+        <a class="brand" href="./"
+          ><svg
+            class="brand-mark"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+            style="color: var(--accent)"
+          >
+            <circle cx="12" cy="12" r="3.4" />
+            <circle cx="12" cy="3.8" r="1.9" />
+            <circle cx="18.41" cy="6.89" r="1.9" />
+            <circle cx="19.99" cy="13.82" r="1.9" />
+            <circle cx="15.56" cy="19.39" r="1.9" />
+            <circle cx="8.44" cy="19.39" r="1.9" />
+            <circle cx="4.01" cy="13.82" r="1.9" />
+            <circle cx="5.59" cy="6.89" r="1.9" />
+          </svg>
+          crew</a
+        >
+        <div class="nav-links">
+          <a href="./#how" class="hide-sm">How it works</a
+          ><a href="./#roles" class="hide-sm">Roles</a
+          ><a href="./demo.html" aria-current="page">Demo</a
+          ><a
+            href="https://github.com/mauriciomsouza/crew"
+            aria-label="crew on GitHub"
+            style="display: inline-flex; align-items: center; gap: 6px"
+            ><span style="width: 16px; height: 16px; display: inline-flex"
+              ><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.19-3.08-.12-.3-.52-1.46.11-3.04 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.74.11 3.04.74.8 1.19 1.83 1.19 3.08 0 4.41-2.7 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"
+                /></svg></span
+            ><span class="hide-sm">GitHub</span></a
+          >
+        </div>
+        <button class="icon-btn" type="button" data-theme-toggle>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="4" />
+            <path
+              d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+            />
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <main class="wrap demo">
+      <header class="demo-head">
+        <span class="eyebrow"><span class="dot"></span>Live demo</span>
+        <h1>Run crew in your browser.</h1>
+        <p class="lede">
+          This page runs the same generator and doctor as <code>npx create-crew</code>, compiled for
+          the web. Configure a project, generate the team, open any file, then try to break it.
+        </p>
+      </header>
+
+      <div class="stage">
+        <form class="panel config" id="config" aria-labelledby="config-title">
+          <div class="panel-head">
+            <h2 id="config-title"><span class="step">1</span>Configure</h2>
+          </div>
+          <label class="field">
+            <span>Project name</span>
+            <input name="name" value="Parcel" autocomplete="off" required maxlength="40" />
+          </label>
+          <label class="field">
+            <span>One-line description</span>
+            <input
+              name="description"
+              value="A habit tracker for people who keep breaking streaks."
+              autocomplete="off"
+              maxlength="120"
+            />
+          </label>
+          <label class="field">
+            <span>Stack <em>optional</em></span>
+            <input
+              name="stack"
+              value="Expo (React Native), Supabase"
+              autocomplete="off"
+              maxlength="80"
+            />
+          </label>
+          <fieldset class="field">
+            <legend>Roles</legend>
+            <div class="role-picks" id="role-picks"></div>
+            <p class="hint" id="roles-hint" aria-live="polite"></p>
+          </fieldset>
+          <button class="btn btn-primary run" type="submit">
+            Run crew init <span class="arrow" aria-hidden="true">→</span>
+          </button>
+        </form>
+
+        <section class="panel console" aria-labelledby="console-title">
+          <div class="panel-head">
+            <h2 id="console-title"><span class="step">2</span>Terminal</h2>
+            <div class="actions" id="actions" hidden>
+              <button class="chip" type="button" data-action="doctor">crew doctor</button>
+              <label class="chip select">
+                <span class="sr-only">Role to add</span>
+                <select id="add-role" aria-label="crew add role"></select>
+              </label>
+              <button class="chip" type="button" data-action="add">crew add</button>
+            </div>
+          </div>
+          <div class="term">
+            <div class="term-bar">
+              <i></i><i></i><i></i><span class="term-title" id="term-title">~/parcel</span>
+            </div>
+            <pre
+              class="term-body"
+              id="term"
+              aria-live="polite"
+            ><span class="t-dim">Configure a project and press </span>Run crew init<span class="t-dim">.</span></pre>
+          </div>
+          <div class="breakers" id="breakers" hidden>
+            <span class="muted">Break it, then run doctor:</span>
+            <button class="chip ghost" type="button" data-break="delete-agent">
+              Delete an agent
+            </button>
+            <button class="chip ghost" type="button" data-break="frontmatter">
+              Corrupt frontmatter
+            </button>
+            <button class="chip ghost" type="button" data-break="secret">Leak an API key</button>
+            <button class="chip ghost" type="button" data-break="source">
+              Remove a source doc
+            </button>
+            <button class="chip ghost" type="button" data-break="reset">Reset</button>
+          </div>
+        </section>
+      </div>
+
+      <section class="panel workspace" id="workspace" aria-labelledby="ws-title" hidden>
+        <div class="panel-head">
+          <h2 id="ws-title"><span class="step">3</span>Generated files</h2>
+          <span class="muted small" id="ws-count"></span>
+        </div>
+        <div class="ws">
+          <div class="tree" id="tree" role="tree" aria-label="Generated files"></div>
+          <div class="viewer">
+            <div class="viewer-bar">
+              <code id="viewer-path"></code>
+              <span class="muted small" id="viewer-meta"></span>
+            </div>
+            <pre class="viewer-body" id="viewer" tabindex="0" aria-label="File contents"></pre>
+          </div>
+        </div>
+      </section>
+
+      <p class="foot-note muted small">
+        Everything runs locally in this tab. Nothing is uploaded. Want it in your repo?
+        <code>npx create-crew</code>
+      </p>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap">
+        <a class="brand" href="./"
+          ><svg
+            class="brand-mark"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+            style="color: var(--accent)"
+          >
+            <circle cx="12" cy="12" r="3.4" />
+            <circle cx="12" cy="3.8" r="1.9" />
+            <circle cx="18.41" cy="6.89" r="1.9" />
+            <circle cx="19.99" cy="13.82" r="1.9" />
+            <circle cx="15.56" cy="19.39" r="1.9" />
+            <circle cx="8.44" cy="19.39" r="1.9" />
+            <circle cx="4.01" cy="13.82" r="1.9" />
+            <circle cx="5.59" cy="6.89" r="1.9" />
+          </svg>
+          crew</a
+        >
+        <span>Made by <a href="https://github.com/mauriciomsouza">Mauricio Souza</a>.</span>
+        <span class="spacer"></span>
+        <a href="./">Home</a>
+        <a href="https://github.com/mauriciomsouza/crew">GitHub</a>
+      </div>
+    </footer>
+
+    <script type="module" src="./assets/demo.js"></script>
+  </body>
+</html>

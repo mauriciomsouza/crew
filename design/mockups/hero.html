@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <title>Mockup — README hero</title>
+    <link rel="icon" href="../favicon.svg" />
+    <link rel="stylesheet" href="../assets/site.css" />
+    <style>
+      body { min-height: 100vh; background: radial-gradient(90% 70% at 78% 30%, #10323a 0%, transparent 60%), radial-gradient(60% 60% at 10% 100%, #22162d 0%, transparent 60%), #0b0c0e; display: grid; grid-template-columns: 1fr 1.25fr; align-items: center; gap: 72px; padding: 0 96px; }
+      .brand { font-size: 22px; gap: 12px; }
+      .brand-mark { width: 30px; height: 30px; }
+      h1 { font: 650 76px/1.0 var(--sans); letter-spacing: -0.042em; margin: 36px 0 14px; }
+      .sub { font: 560 34px/1.15 var(--sans) !important; letter-spacing: -0.025em; color: var(--text-faint) !important; margin: 0 0 22px !important; }
+      p { color: var(--text-muted); font-size: 21px; line-height: 1.5; margin: 0 0 36px; max-width: 26em; }
+      .cmd { font-size: 17px; min-height: 52px; padding: 0 20px; background: #15171b; border-color: #2a2c33; }
+      .term { font-size: 14.5px; }
+      .term-body { padding: 20px 26px 26px; }
+    </style>
+  </head>
+  <body>
+    <div>
+      <span class="brand"><svg class="brand-mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="color:var(--accent)"><circle cx="12" cy="12" r="3.4"/><circle cx="12" cy="3.8" r="1.9"/><circle cx="18.41" cy="6.89" r="1.9"/><circle cx="19.99" cy="13.82" r="1.9"/><circle cx="15.56" cy="19.39" r="1.9"/><circle cx="8.44" cy="19.39" r="1.9"/><circle cx="4.01" cy="13.82" r="1.9"/><circle cx="5.59" cy="6.89" r="1.9"/></svg> crew</span>
+      <h1>Ship like a team of eight.</h1>
+      <p class="sub">Not one agent doing everything.</p>
+      <p>An open-source agent team for Claude Code: roles, briefs, independent review and human gates.</p>
+      <span class="cmd"><span class="prompt">$</span>npx create-crew</span>
+    </div>
+    <div class="term"><div class="term-bar"><i></i><i></i><i></i><span class="term-title">~/parcel</span></div><pre class="term-body" id="t"></pre></div>
+    <script type="module">
+      import { memoryRepo, planInit, runDoctor, withDefaults } from '../assets/crew.js';
+      import { doctorOutput, initOutput, prompt } from '../assets/term.js';
+      const config = withDefaults({ name: 'Parcel', roles: ['business', 'design', 'dev', 'qa'] });
+      const files = planInit(config);
+      const report = runDoctor(memoryRepo(Object.fromEntries(files.map((f) => [f.path, f.content]))));
+      document.getElementById('t').innerHTML = [
+        prompt('npx create-crew --yes --name Parcel'),
+        ...initOutput(config, files).slice(1, -4),
+        '',
+        prompt('npx crew doctor'),
+        ...doctorOutput(report, 'parcel').filter((l) => !l.includes('│')).slice(1),
+      ].join('\n');
+    </script>
+  </body>
+</html>
