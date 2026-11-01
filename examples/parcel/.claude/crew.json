@@ -1,0 +1,14 @@
+{
+  "$schema": "https://mauriciomsouza.github.io/crew/schema/crew.json",
+  "name": "Parcel",
+  "description": "A habit tracker for people who keep breaking streaks.",
+  "stack": "Expo (React Native), Supabase, EAS",
+  "language": "English",
+  "roles": [
+    "business",
+    "design",
+    "dev",
+    "qa",
+    "release"
+  ]
+}

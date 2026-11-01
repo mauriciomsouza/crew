@@ -47,9 +47,11 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "doctor": "node dist/cli.js doctor",
-    "screens": "node design/render.mjs",
+    "screens": "npm run build:site && node design/render.mjs",
     "check": "npm run typecheck && npm run lint && npm test && npm run build && npm run doctor",
-    "prepublishOnly": "npm run check"
+    "prepublishOnly": "npm run check",
+    "preview": "npm run build:site && node design/serve.mjs",
+    "example": "npm run build && mkdir -p examples/parcel && cd examples/parcel && node ../../dist/cli.js init --yes --force --name Parcel --description \"A habit tracker for people who keep breaking streaks.\" --stack \"Expo (React Native), Supabase, EAS\" --roles business,design,dev,qa,release"
   },
   "dependencies": {
     "@clack/prompts": "^1.8.1",
