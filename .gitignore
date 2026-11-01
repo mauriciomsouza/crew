@@ -1,0 +1,8 @@
+node_modules
+dist
+coverage
+site/assets/crew.js
+*.log
+.DS_Store
+.env
+.env.*

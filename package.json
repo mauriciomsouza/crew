@@ -1,0 +1,71 @@
+{
+  "name": "create-crew",
+  "version": "0.1.0",
+  "description": "Ship like a team of eight. An open-source agent team for Claude Code: roles, briefs, source-of-truth docs and human-owner gates.",
+  "keywords": [
+    "claude-code",
+    "agents",
+    "ai-agents",
+    "scaffolding",
+    "cli",
+    "developer-tools"
+  ],
+  "license": "MIT",
+  "author": "Mauricio Souza (https://github.com/mauriciomsouza)",
+  "homepage": "https://mauriciomsouza.github.io/crew/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mauriciomsouza/crew.git"
+  },
+  "bugs": "https://github.com/mauriciomsouza/crew/issues",
+  "type": "module",
+  "bin": {
+    "create-crew": "dist/cli.js",
+    "crew": "dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsup",
+    "build:site": "tsup --config tsup.site.config.ts",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . && prettier --check .",
+    "format": "prettier --write .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "doctor": "node dist/cli.js doctor",
+    "screens": "node design/render.mjs",
+    "check": "npm run typecheck && npm run lint && npm test && npm run build && npm run doctor",
+    "prepublishOnly": "npm run check"
+  },
+  "dependencies": {
+    "@clack/prompts": "^1.8.1",
+    "picocolors": "^1.1.1",
+    "yaml": "^2.9.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.6.6",
+    "eslint": "^10.14.0",
+    "globals": "^17.14.0",
+    "playwright-core": "^1.64.1",
+    "prettier": "^3.9.10",
+    "tsup": "^9.0.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.1",
+    "vitest": "^5.0.5"
+  }
+}
