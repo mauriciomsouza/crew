@@ -77,7 +77,11 @@ const statusGlyph: Record<Status, string> = {
 function checkBlock(c: CheckResult): string {
   const title = c.status === 'fail' ? pc.bold(c.title) : c.title;
   const lines = [`  ${statusGlyph[c.status]} ${title}`];
-  const detailColor = c.status === 'pass' ? pc.dim : (s: string) => s;
+  // Identifiers are wrapped in backticks in doctor messages; render them in the accent.
+  const detailColor =
+    c.status === 'pass'
+      ? pc.dim
+      : (s: string) => s.replace(/`([^`]+)`/g, (_m, id: string) => pc.cyan(id));
   for (const d of c.details) lines.push(`    ${pc.dim('│')} ${detailColor(d)}`);
   return lines.join('\n');
 }
