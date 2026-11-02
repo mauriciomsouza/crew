@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>crew · concept poster</title>
+    <link rel="stylesheet" href="poster.css" />
+    <style>
+      .poster {
+        background:
+          radial-gradient(circle 420px at 540px 855px, rgb(60 207 230 / 0.13), transparent 70%),
+          radial-gradient(ellipse 600px 460px at 0% 100%, rgb(199 146 234 / 0.1), transparent 70%),
+          var(--bg);
+      }
+      h1 {
+        margin-top: 70px !important;
+        font-size: 100px;
+      }
+      .sub {
+        margin-top: 26px;
+        max-width: 900px;
+        font-size: 30px;
+      }
+      .orbit {
+        position: absolute;
+        inset: 0;
+        z-index: 3 !important;
+      }
+      .node {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        height: 54px;
+        padding: 0 18px;
+        border-radius: 14px;
+        background: var(--panel);
+        border: 1px solid var(--line-strong);
+        font-family: var(--mono);
+        font-size: 21px;
+        color: var(--text);
+        white-space: nowrap;
+        box-shadow: 0 18px 36px -18px rgb(0 0 0 / 0.9);
+      }
+      .node .g {
+        font-size: 16px;
+        color: var(--magenta);
+        padding: 4px 8px;
+        border-radius: 6px;
+        background: rgb(199 146 234 / 0.12);
+      }
+      .node.qa {
+        border-color: rgb(123 216 143 / 0.55);
+      }
+      .hub {
+        position: absolute;
+        left: 540px;
+        top: 855px;
+        width: 176px;
+        height: 176px;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        background: radial-gradient(circle at 50% 40%, #142b31, #0e1013 70%);
+        border: 1.5px solid rgb(60 207 230 / 0.55);
+        display: grid;
+        place-items: center;
+        text-align: center;
+        box-shadow: 0 0 80px 0 rgb(60 207 230 / 0.25);
+      }
+      .hub svg {
+        width: 64px;
+        height: 64px;
+      }
+      .hub div {
+        margin-top: -18px;
+        font-family: var(--mono);
+        font-size: 16px;
+        color: var(--cyan);
+      }
+      .legend {
+        position: absolute;
+        left: 72px;
+        right: 72px;
+        top: 1180px;
+        display: flex;
+        justify-content: center;
+        gap: 34px;
+        font-family: var(--mono);
+        font-size: 17px;
+        color: var(--text-2);
+      }
+      .legend b {
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="poster">
+      <header class="top">
+        <div class="wordmark">
+          <svg viewBox="0 0 24 24" fill="#3ccfe6" aria-hidden="true">
+            <circle cx="12" cy="12" r="3.4" />
+            <circle cx="12.00" cy="3.80" r="1.9" />
+            <circle cx="18.41" cy="6.89" r="1.9" />
+            <circle cx="19.99" cy="13.82" r="1.9" />
+            <circle cx="15.56" cy="19.39" r="1.9" />
+            <circle cx="8.44" cy="19.39" r="1.9" />
+            <circle cx="4.01" cy="13.82" r="1.9" />
+            <circle cx="5.59" cy="6.89" r="1.9" />
+          </svg>
+          crew
+        </div>
+        <div class="eyebrow">One rule</div>
+      </header>
+
+      <h1 class="display">Nobody approves<br /><span class="accent">their own work.</span></h1>
+      <p class="sub">
+        An orchestrator routes briefs to seven roles. QA verifies what dev builds.
+        <b>Gates stop for you.</b>
+      </p>
+
+      <div class="orbit">
+        <svg
+          width="1080"
+          height="1350"
+          viewBox="0 0 1080 1350"
+          style="position: absolute; inset: 0"
+          aria-hidden="true"
+        >
+          <defs>
+            <marker
+              id="ah"
+              viewBox="0 0 10 10"
+              refX="8"
+              refY="5"
+              markerWidth="8"
+              markerHeight="8"
+              orient="auto"
+            >
+              <path
+                d="M1 1 L8 5 L1 9"
+                fill="none"
+                stroke="#7bd88f"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </marker>
+          </defs>
+          <ellipse
+            cx="540"
+            cy="855"
+            rx="300"
+            ry="262"
+            fill="none"
+            stroke="#24262c"
+            stroke-width="1.5"
+            stroke-dasharray="2 8"
+            stroke-linecap="round"
+          />
+          <g stroke="#2c3a3f" stroke-width="1.5">
+            <line x1="540" y1="855" x2="540" y2="593" />
+            <line x1="540" y1="855" x2="775" y2="692" />
+            <line x1="540" y1="855" x2="832" y2="913" />
+            <line x1="540" y1="855" x2="670" y2="1091" />
+            <line x1="540" y1="855" x2="410" y2="1091" />
+            <line x1="540" y1="855" x2="248" y2="913" />
+            <line x1="540" y1="855" x2="305" y2="692" />
+          </g>
+          <!-- dev -> qa -->
+          <path
+            d="M880 950 C 900 1030, 820 1100, 740 1100"
+            fill="none"
+            stroke="#7bd88f"
+            stroke-width="2"
+            stroke-dasharray="4 6"
+            marker-end="url(#ah)"
+          />
+          <text x="902" y="1042" font-family="JetBrains Mono" font-size="17" fill="#7bd88f">
+            verifies
+          </text>
+        </svg>
+
+        <div class="hub">
+          <div style="margin: 0">
+            <svg viewBox="0 0 24 24" fill="#3ccfe6" aria-hidden="true">
+              <circle cx="12" cy="12" r="3.4" />
+              <circle cx="12.00" cy="3.80" r="1.9" />
+              <circle cx="18.41" cy="6.89" r="1.9" />
+              <circle cx="19.99" cy="13.82" r="1.9" />
+              <circle cx="15.56" cy="19.39" r="1.9" />
+              <circle cx="8.44" cy="19.39" r="1.9" />
+              <circle cx="4.01" cy="13.82" r="1.9" />
+              <circle cx="5.59" cy="6.89" r="1.9" />
+            </svg>
+            <div style="margin-top: 8px">orchestrator</div>
+          </div>
+        </div>
+
+        <span class="node" style="left: 540px; top: 593px"
+          >business <span class="g">◆ G1</span></span
+        >
+        <span class="node" style="left: 775px; top: 692px">design <span class="g">◆ G2</span></span>
+        <span class="node" style="left: 832px; top: 913px">dev</span>
+        <span class="node qa" style="left: 670px; top: 1091px">qa</span>
+        <span class="node" style="left: 410px; top: 1091px">infra <span class="g">◆ G3</span></span>
+        <span class="node" style="left: 248px; top: 913px"
+          >release <span class="g">◆ G4</span></span
+        >
+        <span class="node" style="left: 305px; top: 692px"
+          >marketing <span class="g">◆ G5</span></span
+        >
+      </div>
+
+      <div class="legend">
+        <span><b style="color: var(--magenta)">◆</b> stops for the owner’s approval</span>
+        <span><b style="color: var(--green)">✓</b> PASS or FAIL, with evidence</span>
+      </div>
+
+      <footer class="bottom">
+        <div class="left">
+          <span class="tag"><i></i>Open source · free</span>
+          <span class="url">mauriciomsouza.github.io/crew</span>
+        </div>
+        <div class="sig">
+          <div>
+            <div class="who">Mauricio Souza</div>
+            <div class="role">Design Engineer</div>
+          </div>
+          <div class="monogram">MS</div>
+        </div>
+      </footer>
+    </section>
+  </body>
+</html>

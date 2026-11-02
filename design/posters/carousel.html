@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>crew · LinkedIn carousel</title>
+    <link rel="stylesheet" href="poster.css" />
+    <style>
+      .poster {
+        background:
+          radial-gradient(ellipse 700px 520px at 100% 0%, rgb(60 207 230 / 0.12), transparent 70%),
+          radial-gradient(ellipse 600px 460px at 0% 100%, rgb(199 146 234 / 0.1), transparent 70%),
+          var(--bg);
+      }
+      .kicker {
+        margin-top: 92px;
+        font-family: var(--mono);
+        font-size: 19px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+      .kicker + .display {
+        margin-top: 22px;
+      }
+      h2.display {
+        font-size: 86px;
+        line-height: 1.02;
+      }
+      .sub {
+        margin-top: 30px;
+        font-size: 31px;
+        max-width: 900px;
+      }
+      .visual {
+        position: absolute;
+        left: 72px;
+        right: 72px;
+        top: 660px;
+        bottom: 130px;
+      }
+      .swipe {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 19px;
+        font-weight: 560;
+      }
+      .swipe .arrow {
+        display: inline-grid;
+        place-items: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: var(--bg);
+        font-size: 20px;
+        font-weight: 700;
+      }
+      .term {
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid #2a2d35;
+        background: #0d0e11;
+        box-shadow: 0 50px 90px -30px rgb(0 0 0 / 0.95);
+      }
+      .termtext {
+        margin: 0;
+        padding: 26px 30px;
+        font-family: var(--mono);
+        font-size: 22px;
+        line-height: 1.7;
+        white-space: pre;
+        color: #e6e6e9;
+      }
+      .dim {
+        color: #7c7f89;
+      }
+      .cy {
+        color: var(--cyan);
+      }
+      .gr {
+        color: var(--green);
+      }
+      .rd {
+        color: var(--red);
+      }
+      .mg {
+        color: var(--magenta);
+      }
+      .yl {
+        color: var(--yellow);
+      }
+
+      /* 1 */
+      .s1 .display {
+        margin-top: 120px;
+        font-size: 112px;
+      }
+      .verdict {
+        position: absolute;
+        left: 72px;
+        top: 760px;
+        width: 620px;
+        transform: rotate(-1.5deg);
+      }
+      .stamp {
+        position: absolute;
+        left: 600px;
+        top: 950px;
+        padding: 14px 22px;
+        border: 3px solid var(--red);
+        border-radius: 10px;
+        color: var(--red);
+        font-family: var(--mono);
+        font-size: 30px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        transform: rotate(-8deg);
+        background: rgb(11 12 14 / 0.85);
+      }
+
+      /* 2 */
+      .solo {
+        display: flex;
+        align-items: center;
+        gap: 48px;
+      }
+      .bubble {
+        flex: none;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        border: 1.5px dashed var(--line-strong);
+        display: grid;
+        place-items: center;
+        text-align: center;
+        font-family: var(--mono);
+        font-size: 20px;
+        color: var(--text-2);
+        background: radial-gradient(circle, rgb(240 113 120 / 0.06), transparent 70%);
+      }
+      .bubble b {
+        display: block;
+        font-family: var(--sans);
+        font-size: 30px;
+        color: var(--text);
+        font-weight: 620;
+        margin-bottom: 6px;
+      }
+      .jobs {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        font-family: var(--mono);
+        font-size: 23px;
+      }
+      .jobs span {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        height: 52px;
+        padding: 0 18px;
+        border-radius: 12px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        width: fit-content;
+      }
+      .jobs span.bad {
+        border-color: rgb(240 113 120 / 0.55);
+        color: var(--red);
+      }
+
+      /* 4 */
+      .pair {
+        display: grid;
+        grid-template-columns: 1fr 60px 1fr;
+        align-items: center;
+      }
+      .doc {
+        padding: 24px 26px;
+        background: var(--panel);
+        border: 1px solid var(--line-strong);
+        border-radius: 14px;
+      }
+      .doc h4 {
+        margin: 0 0 16px;
+        font-family: var(--mono);
+        font-size: 16px;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--text-2);
+      }
+      .doc .f {
+        font-family: var(--mono);
+        font-size: 21px;
+        line-height: 1.5;
+        color: var(--text-2);
+        padding: 9px 0;
+        border-top: 1px solid var(--line);
+      }
+      .doc .f b {
+        display: block;
+        color: var(--text);
+        font-weight: 600;
+        font-size: 21px;
+      }
+
+      /* 7 */
+      .s7 .display {
+        margin-top: 150px;
+        font-size: 120px;
+      }
+      .s7 .big-url {
+        margin-top: 40px;
+        font-family: var(--mono);
+        font-size: 38px;
+        letter-spacing: -0.01em;
+      }
+      .s7 .facts {
+        margin-top: 34px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .s7 .fact {
+        height: 46px;
+        padding: 0 18px;
+        display: inline-flex;
+        align-items: center;
+        border-radius: 999px;
+        border: 1px solid var(--line-strong);
+        font-size: 20px;
+        color: var(--text-2);
+      }
+      .term.demo {
+        position: absolute;
+        left: 470px;
+        top: 690px;
+        transform: rotate(3deg);
+        box-shadow:
+          0 50px 90px -30px rgb(0 0 0 / 0.95),
+          0 0 120px 0 rgb(60 207 230 / 0.14);
+      }
+      .cmd {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        height: 64px;
+        padding: 0 24px;
+        border-radius: 12px;
+        background: var(--sunken);
+        border: 1px solid var(--line-strong);
+        font-family: var(--mono);
+        font-size: 26px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 1 · cover -->
+    <section class="poster s1">
+      <header class="top">
+        <div class="wordmark">
+          <svg viewBox="0 0 24 24" fill="#3ccfe6" aria-hidden="true">
+            <circle cx="12" cy="12" r="3.4" />
+            <circle cx="12.00" cy="3.80" r="1.9" />
+            <circle cx="18.41" cy="6.89" r="1.9" />
+            <circle cx="19.99" cy="13.82" r="1.9" />
+            <circle cx="15.56" cy="19.39" r="1.9" />
+            <circle cx="8.44" cy="19.39" r="1.9" />
+            <circle cx="4.01" cy="13.82" r="1.9" />
+            <circle cx="5.59" cy="6.89" r="1.9" /></svg
+          >crew
+        </div>
+        <div class="counter"><b>1</b>/7</div>
+      </header>
+      <h2 class="display">
+        Your AI agent shouldn’t <span class="accent">grade its own work.</span>
+      </h2>
+      <div class="term verdict">
+        <pre class="termtext"><span class="dim">author   </span> dev
+<span class="dim">reviewer </span> dev
+<span class="dim">verdict  </span> <span class="gr">✓ looks good to me</span></pre>
+      </div>
+      <div class="stamp">✗ SAME AGENT</div>
+      <footer class="bottom">
+        <div class="left">
+          <span class="swipe">Swipe <span class="arrow">→</span></span>
+        </div>
+        <div class="sig">
+          <div>
+            <div class="who">Mauricio Souza</div>
+            <div class="role">Design Engineer</div>
+          </div>
+          <div class="monogram">MS</div>
+        </div>
+      </footer>
+    </section>
+
+    <!-- 2 · problem -->
+    <section class="poster s2">
+      <header class="top">
+        <div class="wordmark">
+          <svg viewBox="0 0 24 24" fill="#3ccfe6" aria-hidden="true">
+            <circle cx="12" cy="12" r="3.4" />
+            <circle cx="12.00" cy="3.80" r="1.9" />
+            <circle cx="18.41" cy="6.89" r="1.9" />
+            <circle cx="19.99" cy="13.82" r="1.9" />
+            <circle cx="15.56" cy="19.39" r="1.9" />
+            <circle cx="8.44" cy="19.39" r="1.9" />
+            <circle cx="4.01" cy="13.82" r="1.9" />
+            <circle cx="5.59" cy="6.89" r="1.9" /></svg
+          >crew
+        </div>
+        <div class="counter"><b>2</b>/7</div>
+      </header>
+      <div class="kicker">The problem</div>
+      <h2 class="display">One session does everything.</h2>
+      <p class="sub">
+        Decisions live in chat history. Nobody plays a different role, so
+        <b>you end up as the only reviewer</b>.
+      </p>
+      <div class="visual">
+        <div class="solo">
+          <div class="bubble">
+            <div><b>1 session</b>5 jobs</div>
+          </div>
+          <div class="jobs">
+            <span><span class="dim">01</span> scopes the work</span>
+            <span><span class="dim">02</span> designs it</span>
+            <span><span class="dim">03</span> builds it</span>
+            <span><span class="dim">04</span> tests it</span>
+            <span class="bad"><span class="dim">05</span> says it’s done ✗</span>
+          </div>
+        </div>
+      </div>
+      <footer class="bottom">
+        <div class="left"><span class="url">mauriciomsouza.github.io/crew</span></div>
+        <div class="sig">
+          <div>
+            <div class="who">Mauricio Souza</div>
+            <div class="role">Design Engineer</div>
+          </div>
+          <div class="monogram">MS</div>
+        </div>
+      </footer>
+    </section>
+
+    <!-- 3 · one command -->
+    <section class="poster s3">
+      <header class="top">
+        <div class="wordmark">
+          <svg viewBox="0 0 24 24" fill="#3ccfe6" aria-hidden="true">
+            <circle cx="12" cy="12" r="3.4" />
+            <circle cx="12.00" cy="3.80" r="1.9" />
+            <circle cx="18.41" cy="6.89" r="1.9" />
+            <circle cx="19.99" cy="13.82" r="1.9" />
+            <circle cx="15.56" cy="19.39" r="1.9" />
+            <circle cx="8.44" cy="19.39" r="1.9" />
+            <circle cx="4.01" cy="13.82" r="1.9" />
+            <circle cx="5.59" cy="6.89" r="1.9" /></svg
+          >crew
+        </div>
+        <div class="counter"><b>3</b>/7</div>
+      </header>
+      <div class="kicker">How it works · 1</div>
+      <h2 class="display">One command scaffolds the team.</h2>
+      <p class="sub">
+        Role agents, source-of-truth docs and owner gates, in any repo. Existing files are
+        <b>never overwritten silently</b>.
+      </p>
+      <div class="visual">
+        <div class="term" style="width: 936px">
+          <div class="crop" style="--x: 168; --y: 104; --w: 1440; --h: 860; --iw: 2400; --k: 0.65">
+            <img src="../../docs/design/screens/terminal-init.png" alt="" />
+          </div>
+        </div>
+      </div>
+      <footer class="bottom">
+        <div class="left"><span class="url">mauriciomsouza.github.io/crew</span></div>
+        <div class="sig">
+          <div>
+            <div class="who">Mauricio Souza</div>
+            <div class="role">Design Engineer</div>
+          </div>
+          <div class="monogram">MS</div>
+        </div>
+      </footer>
+    </section>
+
+    <!-- 4 · briefs and handoffs -->
+    <section class="poster s4">
+      <header class="top">
+        <div class="wordmark">
+          <svg viewBox="0 0 24 24" fill="#3ccfe6" aria-hidden="true">
+            <circle cx="12" cy="12" r="3.4" />
+            <circle cx="12.00" cy="3.80" r="1.9" />
+            <circle cx="18.41" cy="6.89" r="1.9" />
+            <circle cx="19.99" cy="13.82" r="1.9" />
+            <circle cx="15.56" cy="19.39" r="1.9" />
+            <circle cx="8.44" cy="19.39" r="1.9" />
+            <circle cx="4.01" cy="13.82" r="1.9" />
+            <circle cx="5.59" cy="6.89" r="1.9" /></svg
+          >crew
+        </div>
+        <div class="counter"><b>4</b>/7</div>
+      </header>
+      <div class="kicker">How it works · 2</div>
+      <h2 class="display">Briefs in. Handoffs out.</h2>
+      <p class="sub">
+        Every task starts from a written brief and ends with a fixed handoff block.
+        <b>Evidence over assertion.</b>
+      </p>
+      <div class="visual">
+        <div class="pair">
+          <div class="doc">
+            <h4>Brief → dev</h4>
+            <div class="f"><b>Goal</b>Add a role later without losing edits</div>
+            <div class="f"><b>Acceptance criteria</b>Only marked sections change</div>
+            <div class="f"><b>Out of scope</b>Custom role packs</div>
+          </div>
+          <svg width="60" height="40" viewBox="0 0 60 40" aria-hidden="true">
+            <path
+              d="M10 20 H46 M38 12 L48 20 L38 28"
+              fill="none"
+              stroke="#3ccfe6"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <div class="doc" style="border-color: rgb(123 216 143 / 0.5)">
+            <h4>Handoff · qa</h4>
+            <div class="f"><b>Verdict</b><span class="gr">PASS</span></div>
+            <div class="f"><b>Checks</b>npm run check · 0 failed</div>
+            <div class="f"><b>Next</b>release</div>
+          </div>
+        </div>
+      </div>
+      <footer class="bottom">
+        <div class="left"><span class="url">mauriciomsouza.github.io/crew</span></div>
+        <div class="sig">
+          <div>
+            <div class="who">Mauricio Souza</div>
+            <div class="role">Design Engineer</div>
+          </div>
+          <div class="monogram">MS</div>
+        </div>
+      </footer>
+    </section>
+
+    <!-- 5 · gates -->
+    <section class="poster s5">
+      <header class="top">
+        <div class="wordmark">
+          <svg viewBox="0 0 24 24" fill="#3ccfe6" aria-hidden="true">
+            <circle cx="12" cy="12" r="3.4" />
+            <circle cx="12.00" cy="3.80" r="1.9" />
+            <circle cx="18.41" cy="6.89" r="1.9" />
+            <circle cx="19.99" cy="13.82" r="1.9" />
+            <circle cx="15.56" cy="19.39" r="1.9" />
+            <circle cx="8.44" cy="19.39" r="1.9" />
+            <circle cx="4.01" cy="13.82" r="1.9" />
+            <circle cx="5.59" cy="6.89" r="1.9" /></svg
+          >crew
+        </div>
+        <div class="counter"><b>5</b>/7</div>
+      </header>
+      <div class="kicker">The design decision</div>
+      <h2 class="display">Gates stop for the human.</h2>
+      <p class="sub">
+        Scope, design, production, ship, publish: the orchestrator stops and asks.
+        <b>Silence is not approval.</b>
+      </p>
+      <div class="visual" style="top: 640px">
+        <div class="term">
+          <pre
+            class="termtext"
+            style="font-size: 21px; line-height: 1.75"
+          ><span class="mg">Owner</span>
+  <span class="dim">│  goal</span>
+  <span class="dim">▼</span>
+<span class="cy">Orchestrator</span> <span class="dim">── briefs, routing, PLAN.md</span>
+  <span class="dim">├─▶</span> business    <span class="dim">scope · metric       </span> <span class="mg">◆ G1 Scope</span>
+  <span class="dim">├─▶</span> design      <span class="dim">flows · states · copy</span> <span class="mg">◆ G2 Design</span>
+  <span class="dim">├─▶</span> dev         <span class="dim">code · tests</span>
+  <span class="dim">├─▶</span> qa          <span class="dim">independent verdict  </span> <span class="rd">✗ FAIL → author</span>
+  <span class="dim">├─▶</span> infra       <span class="dim">CI · deploys         </span> <span class="mg">◆ G3 Production</span>
+  <span class="dim">├─▶</span> release     <span class="dim">version · go/no-go   </span> <span class="mg">◆ G4 Ship</span>
+  <span class="dim">└─▶</span> marketing   <span class="dim">launch drafts        </span> <span class="mg">◆ G5 Publish</span></pre>
+        </div>
+      </div>
+      <footer class="bottom">
+        <div class="left"><span class="url">mauriciomsouza.github.io/crew</span></div>
+        <div class="sig">
+          <div>
+            <div class="who">Mauricio Souza</div>
+            <div class="role">Design Engineer</div>
+          </div>
+          <div class="monogram">MS</div>
+        </div>
+      </footer>
+    </section>
+
+    <!-- 6 · doctor -->
+    <section class="poster s6">
+      <header class="top">
+        <div class="wordmark">
+          <svg viewBox="0 0 24 24" fill="#3ccfe6" aria-hidden="true">
+            <circle cx="12" cy="12" r="3.4" />
+            <circle cx="12.00" cy="3.80" r="1.9" />
+            <circle cx="18.41" cy="6.89" r="1.9" />
+            <circle cx="19.99" cy="13.82" r="1.9" />
+            <circle cx="15.56" cy="19.39" r="1.9" />
+            <circle cx="8.44" cy="19.39" r="1.9" />
+            <circle cx="4.01" cy="13.82" r="1.9" />
+            <circle cx="5.59" cy="6.89" r="1.9" /></svg
+          >crew
+        </div>
+        <div class="counter"><b>6</b>/7</div>
+      </header>
+      <div class="kicker">What makes it different</div>
+      <h2 class="display">crew doctor keeps the team honest.</h2>
+      <p class="sub">
+        It checks the setup against its own documents, exits 1 on errors and never echoes a secret.
+        <b>freshed and tokensync were built with it.</b>
+      </p>
+      <div class="visual" style="top: 700px">
+        <div class="term" style="width: 936px">
+          <div class="crop" style="--x: 168; --y: 170; --w: 1418; --h: 800; --iw: 2400; --k: 0.66">
+            <img src="../../docs/design/screens/terminal-doctor.png" alt="" />
+          </div>
+        </div>
+      </div>
+      <footer class="bottom">
+        <div class="left"><span class="url">mauriciomsouza.github.io/crew</span></div>
+        <div class="sig">
+          <div>
+            <div class="who">Mauricio Souza</div>
+            <div class="role">Design Engineer</div>
+          </div>
+          <div class="monogram">MS</div>
+        </div>
+      </footer>
+    </section>
+
+    <!-- 7 · CTA -->
+    <section class="poster s7">
+      <div class="table"></div>
+      <header class="top">
+        <div class="wordmark">
+          <svg viewBox="0 0 24 24" fill="#3ccfe6" aria-hidden="true">
+            <circle cx="12" cy="12" r="3.4" />
+            <circle cx="12.00" cy="3.80" r="1.9" />
+            <circle cx="18.41" cy="6.89" r="1.9" />
+            <circle cx="19.99" cy="13.82" r="1.9" />
+            <circle cx="15.56" cy="19.39" r="1.9" />
+            <circle cx="8.44" cy="19.39" r="1.9" />
+            <circle cx="4.01" cy="13.82" r="1.9" />
+            <circle cx="5.59" cy="6.89" r="1.9" /></svg
+          >crew
+        </div>
+        <div class="counter"><b>7</b>/7</div>
+      </header>
+      <h2 class="display">Try the <span class="accent">live demo.</span></h2>
+      <div class="big-url">mauriciomsouza.github.io/<span class="accent">crew</span></div>
+      <div class="facts">
+        <span class="fact">The real generator, in your browser</span>
+        <span class="fact">Break it, watch doctor catch it</span>
+        <span class="fact">MIT license</span>
+      </div>
+      <div style="margin-top: 110px; position: relative; z-index: 4">
+        <div class="kicker" style="margin: 0 0 16px; color: var(--text-2)">Or in your repo</div>
+        <div class="cmd"><span class="dim">$</span> npx create-crew</div>
+      </div>
+      <div class="term demo">
+        <div class="crop" style="--x: 1123; --y: 598; --w: 1350; --h: 1130; --iw: 2880; --k: 0.41">
+          <img src="../../docs/design/screens/demo-dark.png" alt="" />
+        </div>
+      </div>
+      <footer class="bottom">
+        <div class="left">
+          <span class="tag"><i></i>Open source · free</span>
+        </div>
+        <div class="sig">
+          <div>
+            <div class="who">Mauricio Souza</div>
+            <div class="role">Design Engineer</div>
+          </div>
+          <div class="monogram">MS</div>
+        </div>
+      </footer>
+    </section>
+  </body>
+</html>
