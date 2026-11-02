@@ -47,6 +47,8 @@ const { values, positionals } = parseArgs({
   },
 });
 
+// `npx create-crew` enters through src/create.ts, which inserts `init`. The basename check
+// stays for direct invocations of a file or link named create-crew.
 const invokedAs = basename(process.argv[1] ?? '');
 const command = positionals[0] ?? (invokedAs.startsWith('create-crew') ? 'init' : 'help');
 

@@ -36,7 +36,7 @@
         prompt('npx create-crew --yes --name Parcel'),
         ...initOutput(config, files).slice(1, -4),
         '',
-        prompt('npx crew doctor'),
+        prompt('npx create-crew doctor'),
         ...doctorOutput(report, 'parcel').filter((l) => !l.includes('│')).slice(1),
       ].join('\n');
     </script>

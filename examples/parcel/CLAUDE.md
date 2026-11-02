@@ -54,4 +54,4 @@ When documents disagree, the owner of the document wins in their area. If someth
 
 - Stack: Expo (React Native), Supabase, EAS
 - Plan and gates: [`docs/PLAN.md`](docs/PLAN.md)
-- Validate this setup any time with `npx crew doctor`.
+- Validate this setup any time with `npx create-crew doctor`.

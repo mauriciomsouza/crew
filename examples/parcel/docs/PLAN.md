@@ -23,7 +23,7 @@ Goal: the team, the documents and the toolchain are in place.
 
 - [ ] Fill in the source-of-truth documents listed in `CLAUDE.md`
 - [ ] Agree the first iteration's goal with the owner
-- [ ] `npx crew doctor` passes
+- [ ] `npx create-crew doctor` passes
 
 ### Phase 1 — First usable version
 

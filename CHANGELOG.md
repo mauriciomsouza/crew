@@ -4,6 +4,12 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-11-02
+
+### Fixed
+
+- `npx create-crew` printed the help instead of scaffolding. npx resolves the bin symlink, so the CLI never saw the name `create-crew`; the package now ships a dedicated `create-crew` entry that defaults to `init`.
+
 ## [0.1.0] - 2026-11-01
 
 ### Added

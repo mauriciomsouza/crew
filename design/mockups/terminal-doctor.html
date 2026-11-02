@@ -25,11 +25,11 @@
       broken['.claude/agents/dev.md'] = broken['.claude/agents/dev.md'].replace('tools: Read,', 'tools: Telepathy, Read,');
       const bad = runDoctor(memoryRepo(broken));
       document.getElementById('t').innerHTML = [
-        prompt('npx crew doctor'),
+        prompt('npx create-crew doctor'),
         ...doctorOutput(bad, 'parcel').slice(1),
         '',
         dim('# restore the files, then'),
-        prompt('npx crew doctor'),
+        prompt('npx create-crew doctor'),
         ...doctorOutput(ok, 'parcel').filter((l) => !l.includes('│')).slice(1),
       ].join('\n');
     </script>

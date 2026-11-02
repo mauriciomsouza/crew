@@ -149,7 +149,9 @@ export async function init(io: Io, flags: InitFlags): Promise<number> {
   io.out(
     `  ${pc.dim('1.')} Open Claude Code here and say: ${pc.cyan('"Read CLAUDE.md and docs/AGENT_TEAM.md, then propose the first brief."')}`,
   );
-  io.out(`  ${pc.dim('2.')} Run ${pc.cyan('npx crew doctor')} whenever you change the team.\n`);
+  io.out(
+    `  ${pc.dim('2.')} Run ${pc.cyan('npx create-crew doctor')} whenever you change the team.\n`,
+  );
   if (interactive) p.outro(`Your crew of ${config.roles.length + 1} is ready.`);
   return 0;
 }

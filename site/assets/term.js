@@ -66,7 +66,7 @@ export function initOutput(config, files) {
     '',
     `  ${bold('Next')}`,
     `  ${dim('1.')} Open Claude Code here and say: ${cyan('"Read CLAUDE.md and docs/AGENT_TEAM.md, then propose the first brief."')}`,
-    `  ${dim('2.')} Run ${cyan('npx crew doctor')} whenever you change the team.`,
+    `  ${dim('2.')} Run ${cyan('npx create-crew doctor')} whenever you change the team.`,
   ];
 }
 

@@ -36,7 +36,7 @@ async function heroLoop() {
     hero.append(out);
     await play(out, initOutput(config, files).slice(0, -3), { delay: 55 });
     await new Promise((r) => setTimeout(r, 700));
-    await type(hero, 'npx crew doctor');
+    await type(hero, 'npx create-crew doctor');
     const out2 = document.createElement('span');
     hero.append(out2);
     await play(out2, doctorOutput(report, 'parcel').filter((l) => !l.includes('│')), { delay: 70 });
@@ -81,7 +81,7 @@ const broken = { ...repo };
 delete broken['.claude/agents/qa.md'];
 const report = runDoctor(memoryRepo(broken));
 document.getElementById('doctor-term').innerHTML = [
-  `<span class="t-green">❯</span> npx crew doctor`,
+  `<span class="t-green">❯</span> npx create-crew doctor`,
   ...doctorOutput(report, 'parcel'),
   '',
   `${dim('exit 1')}`,

@@ -25,7 +25,7 @@ crew fixes the structure, not the prompts. It sets up an **orchestrator and up t
 ```bash
 cd your-project
 npx create-crew          # interactive: name, description, stack, roles
-npx crew doctor          # validate the setup (exits 1 on errors)
+npx create-crew doctor          # validate the setup (exits 1 on errors)
 ```
 
 Then open Claude Code in the project and say:
@@ -36,7 +36,7 @@ Non-interactive, for scripts and CI:
 
 ```bash
 npx create-crew --yes --name Parcel --roles business,design,dev,qa,release
-npx crew add infra       # add a role later; team tables update in place
+npx create-crew add infra       # add a role later; team tables update in place
 ```
 
 crew never overwrites an existing file unless you pass `--force`, and `--dry-run` shows the plan without writing anything.
@@ -119,7 +119,7 @@ A linter for your team setup. Run it locally or in CI.
 Add it to CI:
 
 ```yaml
-- run: npx crew doctor
+- run: npx create-crew doctor
 ```
 
 ## Live demo

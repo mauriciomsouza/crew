@@ -119,12 +119,12 @@ $('#actions').addEventListener('click', async (e) => {
   if (!action || busy) return;
   if (action === 'doctor') {
     const report = runDoctor(memoryRepo(files));
-    await run('npx crew doctor', [...doctorOutput(report, folder), '', dim(`exit ${report.ok ? 0 : 1}`)]);
+    await run('npx create-crew doctor', [...doctorOutput(report, folder), '', dim(`exit ${report.ok ? 0 : 1}`)]);
   }
   if (action === 'add') {
     const role = $('#add-role').value;
     if (!role) {
-      await run('npx crew add', [`${red('✗')} Every role is already on the team.`]);
+      await run('npx create-crew add', [`${red('✗')} Every role is already on the team.`]);
       return;
     }
     const plan = planAdd(memoryRepo(files), role);
@@ -137,7 +137,7 @@ $('#actions').addEventListener('click', async (e) => {
       files[f.path] = f.content;
     }
     pristine = { ...pristine, ...Object.fromEntries([...plan.create, ...plan.update].map((f) => [f.path, f.content])) };
-    await run(`npx crew add ${role}`, addOutput(role, plan));
+    await run(`npx create-crew add ${role}`, addOutput(role, plan));
     syncAddSelect();
     renderTree();
     open(`.claude/agents/${role}.md`);

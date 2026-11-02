@@ -1,6 +1,6 @@
 {
   "name": "create-crew",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Ship like a team of eight. An open-source agent team for Claude Code: roles, briefs, source-of-truth docs and human-owner gates.",
   "keywords": [
     "claude-code",
@@ -20,7 +20,7 @@
   "bugs": "https://github.com/mauriciomsouza/crew/issues",
   "type": "module",
   "bin": {
-    "create-crew": "dist/cli.js",
+    "create-crew": "dist/create.js",
     "crew": "dist/cli.js"
   },
   "exports": {
